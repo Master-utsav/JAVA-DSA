@@ -24,7 +24,17 @@ public class L1_Q10_MaximumConsecutiveOnes {
     }
 
     public static int maximumConsecutiveOnes(List<Integer> array_list){
-
-        return -1;
+        int i = 0;
+        int temp = 0;
+        int max_count = 0;
+        while(i < array_list.size()){
+            if(array_list.get(i) == 1) {
+                temp++;
+                max_count = Integer.max(temp , max_count);
+            }
+            else temp = 0;
+            i++;
+        }
+        return max_count;
     }
 }

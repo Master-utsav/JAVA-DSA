@@ -24,7 +24,15 @@ public class L1_Q11_SingleElement {
     }
 
     public static int singleElementOnAnArray(List<Integer> array_list){
-
-        return -1;
+        int ans = array_list.getFirst();
+        for(int i = 1 ; i < array_list.size() ; i++){
+            ans ^= array_list.get(i);
+        }
+        return ans;
     }
+
+//    **********OUTPUT************
+//    Enter the length of array : 11
+//    Enter the elements of an array : 1 1 2 2 3 3 4 5 5 6 6
+//    Unique Element in an array : [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6] is : 4
 }
