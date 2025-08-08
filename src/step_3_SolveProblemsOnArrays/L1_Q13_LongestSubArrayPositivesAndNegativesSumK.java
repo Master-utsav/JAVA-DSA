@@ -35,7 +35,6 @@ public class L1_Q13_LongestSubArrayPositivesAndNegativesSumK {
 //    Explanation: The longest subarray with sum 10 is {2, 3, 5}. And its length is 3.
 
     public static int longestSubArrayPositivesAndNegativesLengthSumK(List<Integer> array_list , int k){
-
         return -1;
     }
 }

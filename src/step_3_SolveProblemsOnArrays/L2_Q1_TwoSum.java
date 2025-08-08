@@ -26,6 +26,7 @@ public class L2_Q1_TwoSum {
         scanner.close();
     }
 
+    // greedy
     public static boolean possiblePairsOfTwoSum(List<Integer> array_list, int k){
         array_list.sort(Comparator.naturalOrder());
         int i = 0;

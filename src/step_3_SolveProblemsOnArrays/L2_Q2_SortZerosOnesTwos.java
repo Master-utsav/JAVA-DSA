@@ -24,6 +24,8 @@ public class L2_Q2_SortZerosOnesTwos {
 
         scanner.close();
     }
+
+    // Dutch flag algo
     public static  void sortZeroOneTwo(List<Integer> array_list){
         int mid = 0;
         int low = 0;
