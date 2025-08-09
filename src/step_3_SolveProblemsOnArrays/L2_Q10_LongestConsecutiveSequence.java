@@ -50,4 +50,7 @@ public class L2_Q10_LongestConsecutiveSequence {
         }
     }
 
+    // optimal solution
+
+    
 }
