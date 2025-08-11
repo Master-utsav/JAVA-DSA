@@ -1,9 +1,6 @@
 package step_3_SolveProblemsOnArrays;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class L2_Q10_LongestConsecutiveSequence {
     public static void main(String[] args) {
@@ -19,7 +16,9 @@ public class L2_Q10_LongestConsecutiveSequence {
         }
         System.out.print("In an array : " + array_list);
         longestSubsequenceOfAnArrayUsingSort(array_list);
-        System.out.print("  longest possible sub-sequence is : " + array_list);
+        System.out.print("  longest possible sub-sequence is : \n" + array_list);
+        int length = longestSubSequenceOfAnArray(array_list);
+        System.out.println("Length of a subarray is : " + length);
         scanner.close();
     }
 
@@ -51,6 +50,27 @@ public class L2_Q10_LongestConsecutiveSequence {
     }
 
     // optimal solution
+    public static int longestSubSequenceOfAnArray(List<Integer> array_list){
+        Set<Integer> st = new HashSet<>(array_list);
+
+        int longest = 1;
+
+        // Find the longest sequence
+        for (int it : st) {
+            // if 'it' is a starting number
+            if (!st.contains(it - 1)) {
+                // find consecutive numbers
+                int cnt = 1;
+                int x = it;
+                while (st.contains(x + 1)) {
+                    x++;
+                    cnt++;
+                }
+                longest = Math.max(longest, cnt);
+            }
+        }
+        return longest;
+    }
 
     
 }
