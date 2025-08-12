@@ -27,17 +27,19 @@ public class L2_Q14_CountSubArraysWithSumK {
 //    Enter the sum value : 3
 //    total subarray from the array : [3, 2, 1, 4] whose sum is : 3 is : 2
 
+    // cleaner way
     public static int countSubArrayWithSumK(List<Integer> array_list , int k){
         int count = 0;
-        int sum = 0;
+        int pre_sum = 0;
 
         Map<Integer , Integer> map = new HashMap<>();
-        for(int i = 0; i < array_list.size(); i++){
-            sum += array_list.get(i);
-            if(sum == k) count++;
-            int rem_sum = sum - k;
-            if(map.containsKey(rem_sum)) count++;
-            if(!map.containsKey(sum)) map.put(sum , i);
+        map.put(0 , 1);
+
+        for (Integer integer : array_list) {
+            pre_sum += integer;
+            int rem_sum = pre_sum - k;
+            count += map.getOrDefault(rem_sum, 0);
+            map.put(pre_sum, map.getOrDefault(pre_sum, 0) + 1);
         }
 
         return count;
