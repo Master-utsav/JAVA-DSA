@@ -23,6 +23,12 @@ public class L3_Q6_CountSubArrayWithXORK {
         scanner.close();
     }
 
+//    ********************OUTPUT***********************
+//    Enter the length of array : 5
+//    Enter the elements of an array : 4 2 2 6 4
+//    Enter the value of xor as k : 6
+//    Total count of subArray whose xor's is  6 in a : [4, 2, 2, 6, 4] is : 4
+
     public static int countSubArrayWithXORK(List<Integer> array_list, int k){
         int count = 0;
         int xr = 0;
