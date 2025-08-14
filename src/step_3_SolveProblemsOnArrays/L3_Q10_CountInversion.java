@@ -19,9 +19,9 @@ public class L3_Q10_CountInversion {
             len--;
         }
 
-
+        System.out.print("reverse pair count of array : " + array_list);
         int count = countInversion(array_list, 0 , array_list.size() - 1);
-        System.out.println("count inversion of array : " + array_list + " is : " + count);
+        System.out.println(" is : " + count);
 
         scanner.close();
     }

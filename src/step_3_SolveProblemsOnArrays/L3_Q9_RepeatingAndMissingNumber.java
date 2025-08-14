@@ -19,7 +19,7 @@ public class L3_Q9_RepeatingAndMissingNumber {
             len--;
         }
 
-        List<Integer> ans = new ArrayList<>(findRepeatingAndMissingNumber(array_list));
+        List<Integer> ans = new ArrayList<>(findRepeatingAndMissingNumberUsingXOR(array_list));
         System.out.println("In an array : " + array_list + " missing element is : " + ans.getFirst() + " duplicate element is : " + ans.getLast());
 
         scanner.close();
@@ -51,6 +51,44 @@ public class L3_Q9_RepeatingAndMissingNumber {
     }
 
     public static List<Integer> findRepeatingAndMissingNumberUsingXOR(List<Integer> array_list) {
-        return new ArrayList<>();
+        int xr = 0;
+        for (int i = 0; i < array_list.size(); i++) {
+            xr ^= array_list.get(i);
+            xr ^= i + 1;
+        }
+
+        // rightmost bit position
+        int position = 1;
+        while ((xr & 1 << position) == 0) {
+            position++;
+        }
+
+        // else we can find the number which has the rightmost bit as one on that position
+        // so that we just have AND that with the number
+        int number = xr & -xr; // ~(xr - 1) == -xr
+
+        int one_xr = 0; // missing element
+        int zero_xr = 0; // duplicate element
+
+        for (Integer integer : array_list) {
+            //  if ((integer & (1 << position)) != 0) one_xr ^= integer;
+            // instead of left shift 1 two that position and then AND we can now direct end with thet number
+            if((integer & number) != 0) one_xr ^= integer;
+            else zero_xr ^= integer;
+        }
+        for (int i = 1; i <= array_list.size(); i++) {
+            // if ((i & (1 << position)) != 0) one_xr ^= i;
+            // instead of left shift 1 two that position and then AND we can now direct end with thet number
+            if((i & number) != 0) one_xr ^= i;
+            else zero_xr ^= i;
+        }
+
+        int cnt = 0;
+        for (Integer integer : array_list){
+            if(zero_xr == integer) cnt++;
+        }
+
+        if(cnt == 2) return new ArrayList<>(Arrays.asList(one_xr , zero_xr));
+        else return new ArrayList<>(Arrays.asList(zero_xr , one_xr));
     }
 }

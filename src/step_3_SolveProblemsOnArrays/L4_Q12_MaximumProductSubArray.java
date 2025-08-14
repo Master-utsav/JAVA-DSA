@@ -25,7 +25,18 @@ public class L4_Q12_MaximumProductSubArray {
     }
 
     public static int maximumProductSubArray(List<Integer> array_list){
-        int max_prod = 1;
+        int max_prod = Integer.MIN_VALUE;
+        int prefix = 1; int suffix = 1;
+
+        for(int i = 0; i < array_list.size(); i++){
+            if(prefix == 0) prefix = 1;
+            if(suffix == 0) suffix = 1;
+
+            prefix *= array_list.get(i);
+            suffix *= array_list.get(array_list.size() - i -1 );
+
+            max_prod = Integer.max(max_prod , Integer.max(prefix , suffix));
+        }
 
         return max_prod;
     }
