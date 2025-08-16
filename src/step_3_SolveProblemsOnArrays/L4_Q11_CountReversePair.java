@@ -58,6 +58,21 @@ public class L4_Q11_CountReversePair {
 //        return count;
 //    }
 
+    private static int upperBound(List<Integer> array_list, int start, int end, int compare_value) {
+        int ans = end + 1; // default index if all elements are <= compare_value
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (array_list.get(mid) > compare_value) {
+                ans = mid;
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return ans;
+    }
+
+
     public static int calculatePairCount(List<Integer> array_list, int start , int mid, int end) {
         int right = mid + 1;
         int cnt = 0;
